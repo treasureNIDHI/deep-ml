@@ -17,13 +17,7 @@ def train_neuron(features: np.ndarray, labels: np.ndarray, initial_weights: np.n
 		mse=summ/len(probab)
 		mse_values.append(mse)
 
-		# grad_b=0.0
-		# grad_w=0.0
-		# for pred,true in zip(probab,labels):
-		# 	grad_b += (2*(pred-true)*pred*(1-pred))
-		# grad_b/=len(probab)
-		# for feature in features:
-		# 	grad_w = ((sum(2*(pred-true)*pred*(1-pred)*f))/len(probab) for f,pred,true in zip(feature,probab,labels))
+		
 		grad_w = np.zeros_like(initial_weights, dtype=float)
 		grad_b = 0.0
 
