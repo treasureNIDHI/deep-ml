@@ -19,11 +19,16 @@ def self_attention(Q, K, V):
     Returns:
         Attention output of shape (seq_len, d_v)
     """
-     
-    dk=Q.shape[-1]
-    S = (Q@(K.T))/(np.sqrt(dk))
-    S = S - S.max(axis=-1,keepdims=True)
-    weights = np.exp(S)
+    dk = Q.shape[-1]
+    scores = Q@K.T / np.sqrt(dk)
+    scores = scores-scores.max(axis=-1,keepdims=True)
+    weights = np.exp(scores)
     weights = weights/weights.sum(axis=-1,keepdims=True)
     return weights@V
+    # dk=Q.shape[-1]
+    # S = (Q@(K.T))/(np.sqrt(dk))
+    # S = S - S.max(axis=-1,keepdims=True)
+    # weights = np.exp(S)
+    # weights = weights/weights.sum(axis=-1,keepdims=True)
+    # return weights@V
     
