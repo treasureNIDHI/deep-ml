@@ -1,18 +1,15 @@
 import numpy as np
 
 def log_softmax(scores: list) -> np.ndarray:
-	# Your code here
-	# deno=0
+	# scores=np.array(scores, dtype=float)
+	# max_score=np.max(scores)
+	# # for score in scores:
+	# n = np.log(np.sum(np.exp(scores-max_score)))
+	# l_s= (scores-max_score)-n
 	
-	# for score in scores:
-	# 	deno+=np.exp(score)
-	# for score in scores:
-	# 	out.append((np.exp(score))/deno)
-	# return out
-	scores=np.array(scores, dtype=float)
-	max_score=np.max(scores)
-	# for score in scores:
-	n = np.log(np.sum(np.exp(scores-max_score)))
-	l_s= (scores-max_score)-n
-	
-	return l_s
+	# return l_s
+	scores=np.array(scores,dtype=float)
+	max_score = np.max(scores)
+	log = np.log(np.sum(np.exp(scores-max_score)))
+	log_softmax = (scores-max_score) - log
+	return log_softmax
